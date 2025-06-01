@@ -10,11 +10,10 @@ import {
 import { ShippingMethod } from "@shophost/rest-api/schemas";
 import { PaymentMethodDetails } from "@shophost/rest-api/schemas";
 import { useMutation } from "@tanstack/react-query";
+import cx from "classnames";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
-
-import { cx } from "../../lib/utils";
 
 interface ShippingAndPaymentFormProps {
   shippingMethods: ShippingMethod[];
@@ -184,7 +183,7 @@ const ShippingAndPaymentForm: React.FC<ShippingAndPaymentFormProps> = ({
         <Button
           variant="secondary"
           className="shadow-none"
-          onClick={() => router.push("/checkout/details/address")}
+          onClick={() => router.push("/checkout/details/customer-details")}
         >
           Back
         </Button>

@@ -34,11 +34,9 @@ const CheckoutLayout: React.FC<CheckoutLayoutProps> = ({ children }) => {
           <div className="animate-spin rounded-full h-18 w-18 border-b-2 border-teal-500"></div>
         </div>
         <h1 className="h1 font-black font-red-hat-display text-white mt-5 text-center">
-          Madras Bistro
+          Bezpieczny Bagażnik
         </h1>
-        <p className="text-gray-100 mt-2 text-lg">
-          Authentic South Indian Food
-        </p>
+        <p className="text-gray-100 mt-2 text-lg">Authentic Car parts</p>
       </div>
     );
   }

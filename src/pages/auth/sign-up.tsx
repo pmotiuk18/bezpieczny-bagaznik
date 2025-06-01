@@ -11,7 +11,7 @@ const SignUpPage = () => {
 
   useEffect(() => {
     if (session && !isPending) {
-      router.push("/checkout/details/address");
+      router.push("/checkout/details/customer-details");
     }
   }, [session, isPending, router]);
 

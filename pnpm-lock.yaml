@@ -20,12 +20,15 @@ importers:
       '@prisma/adapter-neon':
         specifier: ^6.8.2
         version: 6.8.2(@neondatabase/serverless@1.0.0)
+      '@remixicon/react':
+        specifier: ^4.6.0
+        version: 4.6.0(react@19.1.0)
       '@scalar/nextjs-api-reference':
         specifier: ^0.8.3
         version: 0.8.3(next@15.3.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)
       '@shophost/react-sdk':
-        specifier: ^0.0.10
-        version: 0.0.10(@types/react-dom@19.1.5(@types/react@19.1.5))(@types/react@19.1.5)(openapi3-ts@2.0.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(tailwindcss@4.1.7)
+        specifier: ^0.0.19
+        version: 0.0.19(@types/react-dom@19.1.5(@types/react@19.1.5))(@types/react@19.1.5)(openapi3-ts@2.0.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(tailwindcss@4.1.7)
       '@shophost/rest-api':
         specifier: ^0.1.13
         version: 0.1.13(@types/node@20.17.50)(openapi3-ts@2.0.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.3)
@@ -1217,8 +1220,8 @@ packages:
   '@selderee/plugin-htmlparser2@0.11.0':
     resolution: {integrity: sha512-P33hHGdldxGabLFjPPpaTxVolMrzrcegejx+0GxjrIb9Zv48D8yAIA/QTDR2dFl7Uz7urX8aX6+5bCZslr+gWQ==}
 
-  '@shophost/react-sdk@0.0.10':
-    resolution: {integrity: sha512-LEI7LaQuArNmNpYLS3P1PVukQBfnNXV6d3nyU6aAA0k3bMtWIE2fVEaX3E74ueAOZymRVwWpy+6HC5cYe7GkBQ==}
+  '@shophost/react-sdk@0.0.19':
+    resolution: {integrity: sha512-GZKWPdRUuMKtIp8XNGu+jOre2IKqOTRpCUMgq8lORwtd/+OcIWwkqrypCKAGNQtE2xxWu3t+0A74oPn2CYvRFw==}
     peerDependencies:
       react: '>=18.0.0'
       react-dom: '>=18.0.0'
@@ -4351,7 +4354,7 @@ snapshots:
       domhandler: 5.0.3
       selderee: 0.11.0
 
-  '@shophost/react-sdk@0.0.10(@types/react-dom@19.1.5(@types/react@19.1.5))(@types/react@19.1.5)(openapi3-ts@2.0.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(tailwindcss@4.1.7)':
+  '@shophost/react-sdk@0.0.19(@types/react-dom@19.1.5(@types/react@19.1.5))(@types/react@19.1.5)(openapi3-ts@2.0.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(tailwindcss@4.1.7)':
     dependencies:
       '@anatine/zod-openapi': 2.2.8(openapi3-ts@2.0.2)(zod@3.25.28)
       '@radix-ui/react-dialog': 1.1.14(@types/react-dom@19.1.5(@types/react@19.1.5))(@types/react@19.1.5)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)

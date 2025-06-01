@@ -1,3 +1,7 @@
+import {
+  LocalizedProduct,
+  LocalizedProductCategory,
+} from "@shophost/rest-api/schemas";
 import React from "react";
 
 import { Footer } from "@/components/Footer";
@@ -6,11 +10,8 @@ import { MenuSection } from "@/components/partials/homepage/menu-section";
 import { shophost } from "@/lib/shophost.lib";
 
 const ProductsPage = async () => {
-  // Get locale from context
   const locale = "pl";
 
-  // In a real app, you would fetch data from an API or database
-  // This is just mock data for demonstration
   const productCategories = await shophost.productCategory.getProductCategories(
     {
       params: {
@@ -44,8 +45,6 @@ const ProductsPage = async () => {
     throw new Error("Failed to fetch product categories");
   }
 
-  console.log(data.body.list);
-
   return (
     <div className="flex flex-col min-h-screen font-[family-name:var(--font-geist-sans)]">
       <Navbar />
@@ -57,10 +56,11 @@ const ProductsPage = async () => {
               Wszystkie produkty
             </p>
           </div>
-
           <MenuSection
-            productCategories={productCategories.body.list || []}
-            products={data.body.list || []}
+            productCategories={
+              (productCategories.body.list as LocalizedProductCategory[]) || []
+            }
+            products={(data.body.list as LocalizedProduct[]) || []}
           />
         </div>
       </main>

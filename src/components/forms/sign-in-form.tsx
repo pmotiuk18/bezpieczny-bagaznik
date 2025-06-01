@@ -15,7 +15,8 @@ type FormData = z.infer<typeof SignInSchema>;
 
 const SignInForm = () => {
   const router = useRouter();
-  const redirectPath = router.query.redirect ?? "/checkout/details/address";
+  const redirectPath =
+    router.query.redirect ?? "/checkout/details/customer-details";
   const {
     register,
     handleSubmit,
