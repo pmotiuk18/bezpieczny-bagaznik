@@ -1,0 +1,89 @@
+@utility h1 {
+  /* Typography */
+  @apply text-4xl font-black tracking-tighter;
+
+  @media (width >= theme(--breakpoint-md)) {
+    @apply text-5xl;
+  }
+}
+
+@utility h2 {
+  @apply text-3xl font-black tracking-tighter;
+
+  @media (width >= theme(--breakpoint-md)) {
+    @apply text-4xl;
+  }
+}
+
+@utility h3 {
+  @apply text-3xl font-black;
+}
+
+@utility h4 {
+  @apply text-2xl font-black tracking-tight;
+
+  .dark & {
+    @apply font-bold;
+  }
+}
+
+@utility btn {
+  /* Buttons */
+  @apply font-medium cursor-pointer inline-flex items-center justify-center border border-transparent rounded-xs leading-snug transition duration-150 ease-in-out;
+  @apply px-8 py-3;
+}
+
+@utility btn-sm {
+  @apply font-medium inline-flex items-center justify-center border border-transparent rounded-xs leading-snug transition duration-150 ease-in-out;
+  @apply px-4 py-2;
+}
+
+@utility form-input {
+  /* Forms */
+  @apply border border-gray-300 dark:border-gray-600 focus:ring-0 focus:ring-offset-0;
+  @apply bg-white dark:bg-gray-800 leading-snug rounded-xs py-3 px-4 focus:border-gray-400 dark:focus:border-gray-500;
+  @apply placeholder-gray-500 dark:placeholder-gray-400;
+}
+
+@utility form-textarea {
+  @apply border border-gray-300 dark:border-gray-600 focus:ring-0 focus:ring-offset-0;
+  @apply bg-white dark:bg-gray-800 leading-snug rounded-xs py-3 px-4 focus:border-gray-400 dark:focus:border-gray-500;
+  @apply placeholder-gray-500 dark:placeholder-gray-400;
+}
+
+@utility form-multiselect {
+  @apply border border-gray-300 dark:border-gray-600 focus:ring-0 focus:ring-offset-0;
+  @apply bg-white dark:bg-gray-800 leading-snug rounded-xs py-3 px-4 focus:border-gray-400 dark:focus:border-gray-500;
+}
+
+@utility form-select {
+  @apply border border-gray-300 dark:border-gray-600 focus:ring-0 focus:ring-offset-0;
+  @apply bg-white dark:bg-gray-800 leading-snug rounded-xs py-3 px-4 focus:border-gray-400 dark:focus:border-gray-500;
+  @apply pr-10;
+}
+
+@utility form-checkbox {
+  @apply border border-gray-300 dark:border-gray-600 focus:ring-0 focus:ring-offset-0;
+  @apply bg-transparent checked:bg-teal-500 checked:border-transparent focus-visible:not-checked:border-gray-400 dark:focus-visible:not-checked:border-gray-500;
+  @apply rounded-xs;
+}
+
+@utility form-radio {
+  @apply border border-gray-300 dark:border-gray-600 focus:ring-0 focus:ring-offset-0;
+  @apply bg-transparent checked:bg-teal-500 checked:border-transparent focus-visible:not-checked:border-gray-400 dark:focus-visible:not-checked:border-gray-500;
+}
+
+@utility no-scrollbar {
+  /* Chrome, Safari and Opera */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+@utility dark {
+  & .h4 {
+    @apply font-bold;
+  }
+}

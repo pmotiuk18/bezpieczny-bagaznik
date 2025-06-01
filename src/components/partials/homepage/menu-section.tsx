@@ -6,24 +6,17 @@ import {
 } from "@shophost/rest-api/schemas";
 import React, { useMemo, useState } from "react";
 
-import { useTranslation } from "@/lib/contexts/translation-context";
-
 import { ProductCard } from "../../product-card";
 
 interface MenuSectionProps {
-  sectionTitle?: string;
-  sectionDescription?: string;
   productCategories: LocalizedProductCategory[];
   products: LocalizedProduct[];
 }
 
 const MenuSection: React.FC<MenuSectionProps> = ({
-  sectionTitle,
-  sectionDescription,
   products,
   productCategories,
 }) => {
-  const { t } = useTranslation();
   const [selectedCategory, setSelectedCategory] = useState<string>(
     productCategories[0]?.id || ""
   );
@@ -44,16 +37,6 @@ const MenuSection: React.FC<MenuSectionProps> = ({
       {/* End background gradient */}
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 pt-10">
         <div className="">
-          {/* Section header */}
-          <div className="max-w-3xl mx-auto text-center pb-12 md:pb-6">
-            <h2 className="h2 font-red-hat-display mb-3">
-              {sectionTitle || t("menuSection.title")}
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-400">
-              {sectionDescription || t("menuSection.description")}
-            </p>
-          </div>
-
           {/* Section content */}
           <div className="mt-3">
             {/* Category tabs */}

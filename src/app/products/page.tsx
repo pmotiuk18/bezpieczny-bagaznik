@@ -1,7 +1,8 @@
+import React from "react";
+
 import { Footer } from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
 import { MenuSection } from "@/components/partials/homepage/menu-section";
-import { ProductList } from "@/components/ProductList";
 import { shophost } from "@/lib/shophost.lib";
 
 const ProductsPage = async () => {
@@ -50,9 +51,12 @@ const ProductsPage = async () => {
       <Navbar />
       <main className="flex-grow">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <section className="mb-12 text-center">
-            <h1 className="text-4xl font-bold mb-4">Wszystkie produkty</h1>
-          </section>
+          <div className="max-w-3xl mx-auto text-center pb-12 md:pb-6">
+            <h2 className="h2 font-red-hat-display mb-3">Wszystkie produkty</h2>
+            <p className="text-xl text-gray-600 dark:text-gray-400">
+              Wszystkie produkty
+            </p>
+          </div>
 
           <MenuSection
             productCategories={productCategories.body.list || []}

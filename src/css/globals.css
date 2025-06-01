@@ -1,4 +1,10 @@
 @import "tailwindcss";
+
+@import "./utility-patterns.css";
+
 @source "../../node_modules/@shophost/react-sdk/react-sdk.css";
+
+
+@config '../../tailwind.config.js';
 
 @variant dark (&:where(.dark, .dark *));

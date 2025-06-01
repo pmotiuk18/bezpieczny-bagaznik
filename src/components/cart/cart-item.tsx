@@ -38,15 +38,15 @@ export const CartItem: React.FC<CartItemProps> = ({
         )}
         <div className="flex-1 min-w-0 pl-4 col-span-3">
           <div>
-            <h3 className="font-black text-slate-800 font-red-hat-display text-lg leading-tight">
+            <h3 className="font-black text-slate-800 font-red-hat-display text-lg leading-tight text-left">
               {title}
             </h3>
             {subtitle && (
-              <p className="text-xs font-medium text-gray-600 dark:text-gray-400">
+              <p className="text-xs font-medium text-gray-600 dark:text-gray-400 text-left">
                 {subtitle}
               </p>
             )}
-            <p className="text-xs font-medium text-gray-600 dark:text-gray-400">
+            <p className="text-xs font-medium text-gray-600 dark:text-gray-400 text-left">
               {price}
             </p>
           </div>
