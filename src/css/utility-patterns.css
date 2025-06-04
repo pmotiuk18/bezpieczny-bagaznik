@@ -1,18 +1,10 @@
 @utility h1 {
   /* Typography */
-  @apply text-4xl font-black tracking-tighter;
-
-  @media (width >= theme(--breakpoint-md)) {
-    @apply text-5xl;
-  }
+  @apply text-4xl md:text-5xl font-black tracking-tighter;
 }
 
 @utility h2 {
-  @apply text-3xl font-black tracking-tighter;
-
-  @media (width >= theme(--breakpoint-md)) {
-    @apply text-4xl;
-  }
+  @apply text-3xl md:text-4xl font-black tracking-tighter;
 }
 
 @utility h3 {

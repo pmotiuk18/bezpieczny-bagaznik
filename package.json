@@ -15,7 +15,7 @@
     "@prisma/adapter-neon": "^6.8.2",
     "@remixicon/react": "^4.6.0",
     "@scalar/nextjs-api-reference": "^0.8.3",
-    "@shophost/react-sdk": "^0.0.22",
+    "@shophost/react-sdk": "^0.0.23",
     "@shophost/rest-api": "^0.1.13",
     "@tailwindcss/forms": "^0.5.10",
     "@tailwindcss/postcss": "^4.1.3",

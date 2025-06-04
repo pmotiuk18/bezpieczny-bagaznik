@@ -7,7 +7,7 @@ import {
   Transition,
 } from "@headlessui/react";
 import { AnimatePresence, motion } from "framer-motion";
-import { PhoneIcon, ShoppingBagIcon } from "lucide-react";
+import { PhoneIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
