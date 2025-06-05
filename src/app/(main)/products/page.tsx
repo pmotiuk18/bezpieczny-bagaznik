@@ -10,7 +10,7 @@ import { shophost } from "@/lib/shophost.lib";
 const ProductsPage = async () => {
   const locale = "pl";
 
-  return <div>hi</div>;
+  return <div>Test</div>;
 
   // const productCategories: any =
   //   await shophost.productCategory.getProductCategories({
