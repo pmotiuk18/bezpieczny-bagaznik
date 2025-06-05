@@ -1,6 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  experimental: {
+    // Removing @shophost/rest-api from optimizePackageImports to fix Prisma engine issues on Vercel
+    // optimizePackageImports: ["@shophost/rest-api"],
+  },
   images: {
     remotePatterns: [
       {

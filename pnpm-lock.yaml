@@ -23,6 +23,9 @@ importers:
       '@prisma/adapter-neon':
         specifier: ^6.8.2
         version: 6.8.2(@neondatabase/serverless@1.0.0)
+      '@prisma/nextjs-monorepo-workaround-plugin':
+        specifier: ^6.9.0
+        version: 6.9.0
       '@radix-ui/react-select':
         specifier: ^2.2.5
         version: 2.2.5(@types/react-dom@19.1.5(@types/react@19.1.5))(@types/react@19.1.5)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -42,8 +45,8 @@ importers:
         specifier: ^0.0.23
         version: 0.0.23(@types/react-dom@19.1.5(@types/react@19.1.5))(@types/react@19.1.5)(openapi3-ts@2.0.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(tailwindcss@4.1.7)
       '@shophost/rest-api':
-        specifier: ^0.1.15
-        version: 0.1.15(@types/node@20.17.50)(openapi3-ts@2.0.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.3)
+        specifier: ^0.1.17
+        version: 0.1.17(@types/node@20.17.50)(openapi3-ts@2.0.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.3)
       '@tailwindcss/forms':
         specifier: ^0.5.10
         version: 0.5.10(tailwindcss@4.1.7)
@@ -95,6 +98,9 @@ importers:
       next-themes:
         specifier: ^0.4.6
         version: 0.4.6(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      nextjs-monorepo-workaround-plugin:
+        specifier: link:@types/@prisma/nextjs-monorepo-workaround-plugin
+        version: link:@types/@prisma/nextjs-monorepo-workaround-plugin
       prettier:
         specifier: ^3.5.3
         version: 3.5.3
@@ -733,6 +739,9 @@ packages:
   '@prisma/driver-adapter-utils@6.8.2':
     resolution: {integrity: sha512-5+CzN/41gBsRmA3ekbVy1TXnSImSPBtMlxWAttVH6tg94bv4zGGRmyk5tUCdT83nl0hG1Sq2oMXR7ml6aqILvw==}
 
+  '@prisma/nextjs-monorepo-workaround-plugin@6.9.0':
+    resolution: {integrity: sha512-nSuu2piWfe108Z5X1kvYXwY4lVkVAekxevNkIKRLpv2gUPibg5nUiy2NjfSco21pX6t+yzPfhL4nEB0I2Rt8vA==}
+
   '@radix-ui/number@1.1.1':
     resolution: {integrity: sha512-MkKCwxlXTgz6CFoJx3pCwn07GKp36+aZyu/u2Ln2VrA5DcdyCZkASEDBTd8x5whTQQL5CiYf4prXKLcgQdv29g==}
 
@@ -1290,8 +1299,8 @@ packages:
       react: '>=18.0.0'
       react-dom: '>=18.0.0'
 
-  '@shophost/rest-api@0.1.15':
-    resolution: {integrity: sha512-VOQFpk8eLP6AKow7e67fZYTp3lrjJNjwxN0ixTeSU6b9X9Iwm0w3mRtUa4EnM7l8urJaf5U20iQS1yQo9tf4mQ==}
+  '@shophost/rest-api@0.1.17':
+    resolution: {integrity: sha512-aPP+uiVzDWKDlznxnhSmXm+XbobFaXFwDUF1Mh7/TcGyIlpec9b5kLg/72XnIk7ote+S667WvO4VMVP+yzsuHQ==}
     peerDependencies:
       react: '>=18.0.0'
       react-dom: '>=18.0.0'
@@ -3931,6 +3940,8 @@ snapshots:
     dependencies:
       '@prisma/debug': 6.8.2
 
+  '@prisma/nextjs-monorepo-workaround-plugin@6.9.0': {}
+
   '@radix-ui/number@1.1.1': {}
 
   '@radix-ui/primitive@1.1.2': {}
@@ -4515,7 +4526,7 @@ snapshots:
       - sass
       - tailwindcss
 
-  '@shophost/rest-api@0.1.15(@types/node@20.17.50)(openapi3-ts@2.0.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.3)':
+  '@shophost/rest-api@0.1.17(@types/node@20.17.50)(openapi3-ts@2.0.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.3)':
     dependencies:
       '@anatine/zod-openapi': 2.2.8(openapi3-ts@2.0.2)(zod@3.25.28)
       '@prisma/client': 6.8.2(typescript@5.8.3)

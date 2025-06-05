@@ -1,6 +1,13 @@
 import { PrismaNeon } from "@prisma/adapter-neon";
 import { createNextHandler } from "@shophost/rest-api/next";
 
+import { debugPrismaEngine } from "@/lib/debug-prisma";
+
+// Debug Prisma setup on cold starts in production
+if (process.env.NODE_ENV === "production") {
+  debugPrismaEngine();
+}
+
 const adapter = new PrismaNeon({
   connectionString: process.env.POSTGRES_PRISMA_URL,
 });
