@@ -37,7 +37,7 @@ export const ProductList = ({ products }: ProductListProps) => {
                   ${product.basePrice.toFixed(2)}
                 </span>
                 <Link
-                  href={`/products/${product.id}`}
+                  href={`/src/app/(main)/products/${product.id}`}
                   className="bg-blue-600 text-white px-4 py-2 rounded-md text-sm hover:bg-blue-700 transition-colors"
                 >
                   View Details

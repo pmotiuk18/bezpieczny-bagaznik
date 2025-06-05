@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Red_Hat_Display } from "next/font/google";
 import React from "react";
 
+import { Footer } from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
 import { AppProvider } from "@/components/provider/app-provider";
 
@@ -38,6 +39,7 @@ export default function RootLayout({
             <div className="flex flex-col min-h-screen">
               <Navbar />
               {children}
+              <Footer />
             </div>
           </main>
         </AppProvider>
