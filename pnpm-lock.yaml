@@ -42,8 +42,8 @@ importers:
         specifier: ^0.0.23
         version: 0.0.23(@types/react-dom@19.1.5(@types/react@19.1.5))(@types/react@19.1.5)(openapi3-ts@2.0.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(tailwindcss@4.1.7)
       '@shophost/rest-api':
-        specifier: ^0.1.13
-        version: 0.1.13(@types/node@20.17.50)(openapi3-ts@2.0.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.3)
+        specifier: ^0.1.15
+        version: 0.1.15(@types/node@20.17.50)(openapi3-ts@2.0.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.3)
       '@tailwindcss/forms':
         specifier: ^0.5.10
         version: 0.5.10(tailwindcss@4.1.7)
@@ -1290,8 +1290,8 @@ packages:
       react: '>=18.0.0'
       react-dom: '>=18.0.0'
 
-  '@shophost/rest-api@0.1.13':
-    resolution: {integrity: sha512-Iu950gCtFh0uVDSzVbqASvWsXxgq7jFggjbDxfq9tJJdWXQCMIXu/vQ4itGYH6MHGyTBMXH+4uWaa59hmOqY1w==}
+  '@shophost/rest-api@0.1.15':
+    resolution: {integrity: sha512-VOQFpk8eLP6AKow7e67fZYTp3lrjJNjwxN0ixTeSU6b9X9Iwm0w3mRtUa4EnM7l8urJaf5U20iQS1yQo9tf4mQ==}
     peerDependencies:
       react: '>=18.0.0'
       react-dom: '>=18.0.0'
@@ -1451,16 +1451,6 @@ packages:
     peerDependenciesMeta:
       '@types/node':
         optional: true
-      zod:
-        optional: true
-
-  '@ts-rest/next@3.52.1':
-    resolution: {integrity: sha512-LjxBlDlJDIdZafVucAfc/gJnYP3PATGLVN5nxFfSIJBRvLrlJeKK6oXxHB7biTUle/1xgyOZGTjh+i2S+0sJtA==}
-    peerDependencies:
-      '@ts-rest/core': ~3.52.0
-      next: ^12.0.0 || ^13.0.0 || ^14.0.0
-      zod: ^3.22.3
-    peerDependenciesMeta:
       zod:
         optional: true
 
@@ -4525,13 +4515,12 @@ snapshots:
       - sass
       - tailwindcss
 
-  '@shophost/rest-api@0.1.13(@types/node@20.17.50)(openapi3-ts@2.0.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.3)':
+  '@shophost/rest-api@0.1.15(@types/node@20.17.50)(openapi3-ts@2.0.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.3)':
     dependencies:
       '@anatine/zod-openapi': 2.2.8(openapi3-ts@2.0.2)(zod@3.25.28)
       '@prisma/client': 6.8.2(typescript@5.8.3)
       '@react-email/components': 0.0.36(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@ts-rest/core': 3.52.1(@types/node@20.17.50)(zod@3.25.28)
-      '@ts-rest/next': 3.52.1(@ts-rest/core@3.52.1(@types/node@20.17.50)(zod@3.25.28))(next@15.2.5(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(zod@3.25.28)
       '@ts-rest/open-api': 3.52.1(@ts-rest/core@3.52.1(@types/node@20.17.50)(zod@3.25.28))(zod@3.25.28)
       '@ts-rest/serverless': 3.52.1(@ts-rest/core@3.52.1(@types/node@20.17.50)(zod@3.25.28))(next@15.2.5(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(zod@3.25.28)
       '@vercel/blob': 0.27.3
@@ -4698,13 +4687,6 @@ snapshots:
   '@ts-rest/core@3.52.1(@types/node@20.17.50)(zod@3.25.28)':
     optionalDependencies:
       '@types/node': 20.17.50
-      zod: 3.25.28
-
-  '@ts-rest/next@3.52.1(@ts-rest/core@3.52.1(@types/node@20.17.50)(zod@3.25.28))(next@15.2.5(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(zod@3.25.28)':
-    dependencies:
-      '@ts-rest/core': 3.52.1(@types/node@20.17.50)(zod@3.25.28)
-      next: 15.2.5(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-    optionalDependencies:
       zod: 3.25.28
 
   '@ts-rest/open-api@3.52.1(@ts-rest/core@3.52.1(@types/node@20.17.50)(zod@3.25.28))(zod@3.25.28)':
