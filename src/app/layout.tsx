@@ -36,11 +36,7 @@ export default function RootLayout({
       >
         <AppProvider locale="en">
           <main className="min-h-screen bg-white dark:bg-black">
-            <div className="flex flex-col min-h-screen">
-              <Navbar />
-              {children}
-              <Footer />
-            </div>
+            <div className="flex flex-col min-h-screen">{children}</div>
           </main>
         </AppProvider>
       </body>
