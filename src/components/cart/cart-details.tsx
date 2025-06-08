@@ -117,7 +117,7 @@ export const CartDetails: React.FC<CartDetailsProps> = ({ onClose }) => {
             PLN {total}
           </div>
           <Link
-            href="/src/app/(shophost)/checkout/customer-details"
+            href="/checkout/customer-details"
             className={cx(
               "btn text-sm text-white bg-teal-500 hover:bg-teal-400 rounded-lg w-full",
               {
