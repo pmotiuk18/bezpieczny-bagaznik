@@ -1,0 +1,768 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+  output          = "src/db/__generated__/client"
+  binaryTargets   = ["native", "rhel-openssl-3.0.x", "debian-openssl-3.0.x"]
+
+  runtime                = "nodejs"
+  moduleFormat           = "esm"
+  generatedFileExtension = "ts"
+  importFileExtension    = ""
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
+}
+
+enum FileUploadStatus {
+  pending
+  completed
+  failed
+}
+
+enum Locale {
+  af // Afrikaans
+  sq // Albanian
+  ar_dz // Arabic (Algeria)
+  ar_bh // Arabic (Bahrain)
+  ar_eg // Arabic (Egypt)
+  ar_iq // Arabic (Iraq)
+  ar_jo // Arabic (Jordan)
+  ar_kw // Arabic (Kuwait)
+  ar_lb // Arabic (Lebanon)
+  ar_ly // Arabic (Libya)
+  ar_ma // Arabic (Morocco)
+  ar_om // Arabic (Oman)
+  ar_qa // Arabic (Qatar)
+  ar_sa // Arabic (Saudi Arabia)
+  ar_sy // Arabic (Syria)
+  ar_tn // Arabic (Tunisia)
+  ar_ae // Arabic (U.A.E.)
+  ar_ye // Arabic (Yemen)
+  eu // Basque
+  be // Belarusian
+  bg // Bulgarian
+  ca // Catalan
+  zh_hk // Chinese (Hong Kong)
+  zh_cn // Chinese (PRC)
+  zh_sg // Chinese (Singapore)
+  zh_tw // Chinese (Taiwan)
+  hr // Croatian
+  cs // Czech
+  da // Danish
+  nl_be // Dutch (Belgium)
+  nl // Dutch (Standard)
+  en // English
+  en_au // English (Australia)
+  en_bz // English (Belize)
+  en_ca // English (Canada)
+  en_ie // English (Ireland)
+  en_jm // English (Jamaica)
+  en_nz // English (New Zealand)
+  en_za // English (South Africa)
+  en_tt // English (Trinidad)
+  en_gb // English (United Kingdom)
+  en_us // English (United States)
+  et // Estonian
+  fo // Faeroese
+  fa // Farsi
+  fi // Finnish
+  fr_be // French (Belgium)
+  fr_ca // French (Canada)
+  fr_lu // French (Luxembourg)
+  fr // French (Standard)
+  fr_ch // French (Switzerland)
+  gd // Gaelic (Scotland)
+  de_at // German (Austria)
+  de_li // German (Liechtenstein)
+  de_lu // German (Luxembourg)
+  de // German (Standard)
+  de_ch // German (Switzerland)
+  el // Greek
+  he // Hebrew
+  hi // Hindi
+  hu // Hungarian
+  is // Icelandic
+  id // Indonesian
+  ga // Irish
+  it // Italian (Standard)
+  it_ch // Italian (Switzerland)
+  ja // Japanese
+  ko // Korean
+  ku // Kurdish
+  lv // Latvian
+  lt // Lithuanian
+  mk // Macedonian (FYROM)
+  ml // Malayalam
+  ms // Malaysian
+  mt // Maltese
+  no // Norwegian
+  nb // Norwegian (Bokmål)
+  nn // Norwegian (Nynorsk)
+  pl // Polish
+  pt_br // Portuguese (Brazil)
+  pt // Portuguese (Portugal)
+  pa // Punjabi
+  rm // Rhaeto-Romanic
+  ro // Romanian
+  ro_md // Romanian (Republic of Moldova)
+  ru // Russian
+  ru_md // Russian (Republic of Moldova)
+  sr // Serbian
+  sk // Slovak
+  sl // Slovenian
+  sb // Sorbian
+  es_ar // Spanish (Argentina)
+  es_bo // Spanish (Bolivia)
+  es_cl // Spanish (Chile)
+  es_co // Spanish (Colombia)
+  es_cr // Spanish (Costa Rica)
+  es_do // Spanish (Dominican Republic)
+  es_ec // Spanish (Ecuador)
+  es_sv // Spanish (El Salvador)
+  es_gt // Spanish (Guatemala)
+  es_hn // Spanish (Honduras)
+  es_mx // Spanish (Mexico)
+  es // Spanish (Spain)
+  sv // Swedish
+  sv_fi // Swedish (Finland)
+  th // Thai
+  tr // Turkish
+  uk // Ukrainian
+  ur // Urdu
+  vi // Vietnamese
+  cy // Welsh
+  ji // Yiddish
+  zu // Zulu
+}
+
+enum Currency {
+  USD // United States Dollar
+  EUR // Euro
+  GBP // British Pound Sterling
+  JPY // Japanese Yen
+  AUD // Australian Dollar
+  CAD // Canadian Dollar
+  CHF // Swiss Franc
+  CNY // Chinese Yuan
+  SEK // Swedish Krona
+  NZD // New Zealand Dollar
+  MXN // Mexican Peso
+  SGD // Singapore Dollar
+  HKD // Hong Kong Dollar
+  NOK // Norwegian Krone
+  KRW // South Korean Won
+  TRY // Turkish Lira
+  RUB // Russian Ruble
+  INR // Indian Rupee
+  BRL // Brazilian Real
+  ZAR // South African Rand
+  DKK // Danish Krone
+  PLN // Polish Złoty
+  THB // Thai Baht
+  IDR // Indonesian Rupiah
+  HUF // Hungarian Forint
+  CZK // Czech Koruna
+  ILS // Israeli New Shekel
+  PHP // Philippine Peso
+  AED // United Arab Emirates Dirham
+  COP // Colombian Peso
+  SAR // Saudi Riyal
+  MYR // Malaysian Ringgit
+  RON // Romanian Leu
+}
+
+model User {
+  id                String        @id
+  name              String
+  firstname         String
+  lastname          String
+  email             String
+  emailVerified     Boolean
+  image             String?
+  createdAt         DateTime
+  updatedAt         DateTime
+  sessions          Session[]
+  accounts          Account[]
+  members           Member[]
+  invitations       Invitation[]
+  shippingAddresses Address[]
+  orders            Order[]
+  reservations      Reservation[]
+
+  @@unique([email])
+}
+
+model Session {
+  id                   String   @id
+  expiresAt            DateTime
+  token                String
+  createdAt            DateTime
+  updatedAt            DateTime
+  ipAddress            String?
+  userAgent            String?
+  userId               String
+  user                 User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  activeOrganizationId String?
+
+  @@unique([token])
+}
+
+model Account {
+  id                    String    @id
+  accountId             String
+  providerId            String
+  userId                String
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accessToken           String?
+  refreshToken          String?
+  idToken               String?
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  password              String?
+  createdAt             DateTime
+  updatedAt             DateTime
+}
+
+model Verification {
+  id         String    @id
+  identifier String
+  value      String
+  expiresAt  DateTime
+  createdAt  DateTime?
+  updatedAt  DateTime?
+}
+
+model Member {
+  id             String       @id @default(cuid())
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  userId         String
+  user           User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role           String
+  createdAt      DateTime     @default(now())
+}
+
+model Invitation {
+  id             String       @id
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  email          String
+  role           String?
+  status         String
+  expiresAt      DateTime
+  inviterId      String
+  user           User         @relation(fields: [inviterId], references: [id], onDelete: Cascade)
+}
+
+model Organization {
+  id                String                    @id @default(cuid())
+  name              String
+  slug              String?
+  phone             String?
+  email             String?
+  legalEntityId     String?
+  legalEntity       LegalEntity?              @relation(fields: [legalEntityId], references: [id])
+  addressId         String
+  address           Address                   @relation(fields: [addressId], references: [id])
+  configurationId   String
+  configuration     OrganizationConfiguration @relation(fields: [configurationId], references: [id])
+  logo              String? // logo URL
+  logoId            String?                   @unique
+  logoFile          File?                     @relation("OrganizationLogo", fields: [logoId], references: [id])
+  files             File[]
+  members           Member[]
+  invitations       Invitation[]
+  orders            Order[]
+  campaigns         Campaign[]
+  shippingMethods   ShippingMethod[]
+  manufacturers     Manufacturer[]
+  productCategories ProductCategory[]
+  products          Product[]
+  reservations      Reservation[]
+  createdAt         DateTime                  @default(now())
+  createdBy         String?
+  updatedAt         DateTime                  @updatedAt
+  updatedBy         String?
+  deletedAt         DateTime?
+  deletedBy         String?
+
+  @@unique([slug])
+}
+
+model OpeningTimes {
+  id                        String                     @id @default(cuid())
+  monday                    DateTime?                  @db.Time
+  tuesday                   DateTime?                  @db.Time
+  wednesday                 DateTime?                  @db.Time
+  thursday                  DateTime?                  @db.Time
+  friday                    DateTime?                  @db.Time
+  saturday                  DateTime?                  @db.Time
+  sunday                    DateTime?                  @db.Time
+  organizationConfiguration OrganizationConfiguration?
+}
+
+model ClosingTimes {
+  id                        String                     @id @default(cuid())
+  monday                    DateTime?                  @db.Time
+  tuesday                   DateTime?                  @db.Time
+  wednesday                 DateTime?                  @db.Time
+  thursday                  DateTime?                  @db.Time
+  friday                    DateTime?                  @db.Time
+  saturday                  DateTime?                  @db.Time
+  sunday                    DateTime?                  @db.Time
+  organizationConfiguration OrganizationConfiguration?
+}
+
+model OrganizationConfiguration {
+  id                 String         @id @default(cuid())
+  hostname           String?
+  countriesShipping  String[]       @default([])
+  stripeAccountId    String?
+  enableHostCheckout Boolean
+  enableHostTracking Boolean
+  isAcceptingOrders  Boolean?       @default(false)
+  defaultCurrency    Currency       @default(USD)
+  defaultLocale      Locale         @default(en)
+  supportedLocales   Locale[]       @default([en])
+  openingTimesId     String?        @unique
+  openingTimes       OpeningTimes?  @relation(fields: [openingTimesId], references: [id])
+  closingTimesId     String?        @unique
+  closingTimes       ClosingTimes?  @relation(fields: [closingTimesId], references: [id])
+  facebookProfile    String?
+  instagramProfile   String?
+  xProfile           String?
+  createdAt          DateTime       @default(now())
+  createdBy          String?
+  updatedAt          DateTime       @default(now())
+  updatedBy          String?
+  organizations      Organization[]
+}
+
+model Address {
+  id                   String         @id @default(cuid())
+  firstname            String?
+  lastname             String?
+  phone                String?
+  addressLineOne       String
+  doorNumber           String?
+  addressLineTwo       String?
+  zipCode              String?
+  placeId              String?
+  deliveryInstructions String?
+  city                 String
+  country              String?
+  latitude             Float?
+  longitude            Float?
+  isDefault            Boolean        @default(false)
+  LegalEntity          LegalEntity[]
+  organizations        Organization[]
+  users                User[]
+  orders               Order[]        @relation("OrderShippingAddress")
+  createdAt            DateTime       @default(now())
+  createdBy            String?
+  updatedAt            DateTime       @updatedAt
+  updatedBy            String?
+  deletedAt            DateTime?
+  deletedBy            String?
+}
+
+model LegalEntity {
+  id            String         @id @default(cuid())
+  name          String
+  taxId         String
+  addressId     String
+  address       Address        @relation(fields: [addressId], references: [id])
+  email         String?
+  phone         String?
+  organizations Organization[]
+
+  // metadata
+  createdAt DateTime  @default(now())
+  createdBy String?
+  updatedAt DateTime  @updatedAt
+  updatedBy String?
+  deletedAt DateTime?
+  deletedBy String?
+}
+
+model File {
+  id                    String           @id @default(cuid())
+  mimeType              String?
+  size                  Int?
+  filename              String?
+  url                   String?
+  status                FileUploadStatus @default(pending)
+  organizationId        String?
+  organization          Organization?    @relation(fields: [organizationId], references: [id])
+  manufacturerLogo      Manufacturer?    @relation("ManufacturerLogo")
+  productCategoryImage  ProductCategory? @relation("ProductCategoryImage")
+  productImages         Product[]        @relation("ProductImages")
+  modifierImages        Modifier[]       @relation("ModifierImages")
+  shippingMethodLogoFor ShippingMethod?  @relation("ShippingMethodProviderLogo")
+  organizationLogo      Organization?    @relation("OrganizationLogo")
+  orderItemImages       OrderItem[]      @relation("OrderItemImage")
+  // metadata
+  createdAt             DateTime         @default(now())
+  createdBy             String?
+  updatedAt             DateTime         @updatedAt
+  updatedBy             String?
+  deletedAt             DateTime?
+  deletedBy             String?
+}
+
+model Manufacturer {
+  id             String       @id @default(cuid())
+  name           String
+  logoId         String?      @unique
+  logo           File?        @relation("ManufacturerLogo", fields: [logoId], references: [id])
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  createdAt      DateTime     @default(now())
+  createdBy      String?
+  updatedAt      DateTime     @updatedAt
+  updatedBy      String?
+  deletedAt      DateTime?
+  deletedBy      String?
+
+  products     Product[]
+  translations ManufacturerTranslation[]
+}
+
+model ManufacturerTranslation {
+  id             String       @id @default(cuid())
+  locale         String
+  about          String?
+  manufacturerId String
+  manufacturer   Manufacturer @relation(fields: [manufacturerId], references: [id])
+  createdAt      DateTime     @default(now())
+  createdBy      String?
+  updatedAt      DateTime     @updatedAt
+  updatedBy      String?
+
+  @@unique([locale, manufacturerId])
+}
+
+model ProductCategory {
+  id             String                       @id @default(cuid())
+  slug           String?
+  organizationId String
+  priority       Int?
+  organization   Organization                 @relation(fields: [organizationId], references: [id])
+  imageId        String?                      @unique
+  image          File?                        @relation("ProductCategoryImage", fields: [imageId], references: [id])
+  createdAt      DateTime                     @default(now())
+  createdBy      String?
+  updatedAt      DateTime                     @default(now())
+  updatedBy      String?
+  deletedAt      DateTime?
+  deletedBy      String?
+  publishedAt    DateTime?
+  publishedBy    String?
+  translations   ProductCategoryTranslation[]
+  products       Product[]                    @relation("ProductCategories")
+}
+
+model ProductCategoryTranslation {
+  id                String          @id @default(cuid())
+  locale            String
+  title             String?
+  description       String?
+  productCategoryId String
+  productCategory   ProductCategory @relation(fields: [productCategoryId], references: [id])
+  createdAt         DateTime        @default(now())
+  createdBy         String?
+  updatedAt         DateTime        @updatedAt
+  updatedBy         String?
+
+  @@unique([locale, productCategoryId])
+}
+
+model Product {
+  id                  String               @id @default(cuid())
+  content             String?
+  slug                String?
+  sku                 String?
+  basePrice           Float
+  discountedBasePrice Float?
+  currency            String
+  images              File[]               @relation("ProductImages")
+  organizationId      String
+  organization        Organization         @relation(fields: [organizationId], references: [id])
+  manufacturerId      String?
+  manufacturer        Manufacturer?        @relation(fields: [manufacturerId], references: [id])
+  tags                String[]
+  categories          ProductCategory[]    @relation("ProductCategories")
+  modifierGroups      ModifierGroup[]      @relation("ProductToModifierGroup")
+  translations        ProductTranslation[]
+  publishedAt         DateTime?
+  publishedBy         String?
+  deletedAt           DateTime?
+  deletedBy           String?
+  createdAt           DateTime             @default(now())
+  createdBy           String?
+  updatedAt           DateTime             @default(now())
+  updatedBy           String?
+  snapshots           ProductSnapshot[]
+  latestSnapshotId    String?              @unique
+  latestSnapshot      ProductSnapshot?     @relation("LatestProductSnapshot", fields: [latestSnapshotId], references: [id])
+}
+
+model ProductSnapshot {
+  id               String      @id @default(cuid())
+  productId        String
+  product          Product     @relation(fields: [productId], references: [id])
+  data             Json
+  createdAt        DateTime    @default(now())
+  createdBy        String?
+  latestForProduct Product?    @relation("LatestProductSnapshot")
+  orderItems       OrderItem[] @relation("OrderItemProductSnapshot")
+}
+
+model ProductTranslation {
+  id          String   @id @default(cuid())
+  locale      String
+  title       String?
+  description String?
+  productId   String
+  product     Product  @relation(fields: [productId], references: [id])
+  createdAt   DateTime @default(now())
+  createdBy   String?
+  updatedAt   DateTime @updatedAt
+  updatedBy   String?
+
+  @@unique([locale, productId])
+}
+
+model ModifierGroup {
+  id           String                     @id @default(cuid())
+  selectMin    Int?
+  selectMax    Int?
+  createdAt    DateTime                   @default(now())
+  updatedAt    DateTime                   @default(now())
+  modifiers    Modifier[]                 @relation("ModifierToModifierGroup")
+  products     Product[]                  @relation("ProductToModifierGroup")
+  translations ModifierGroupTranslation[] @relation("ModifierGroupToTranslation")
+}
+
+model ModifierGroupTranslation {
+  id              String        @id @default(cuid())
+  locale          String
+  title           String?
+  description     String?
+  modifierGroupId String
+  modifierGroup   ModifierGroup @relation("ModifierGroupToTranslation", fields: [modifierGroupId], references: [id], onDelete: Cascade)
+
+  @@unique([locale, modifierGroupId])
+}
+
+model Modifier {
+  id              String        @id @default(cuid())
+  title           String
+  description     String?
+  sku             String?
+  price           Float
+  modifierGroupId String
+  modifierGroup   ModifierGroup @relation("ModifierToModifierGroup", fields: [modifierGroupId], references: [id], onDelete: Cascade)
+  images          File[]        @relation("ModifierImages")
+}
+
+enum OrderFulfilmentMethod {
+  delivery
+  pickup
+}
+
+enum OrderStatus {
+  draft
+  pending
+  confirmed
+  completed
+  cancelled
+}
+
+model Order {
+  id                 String                 @id @default(cuid())
+  organizationId     String
+  organization       Organization           @relation(fields: [organizationId], references: [id])
+  userId             String?
+  user               User?                  @relation(fields: [userId], references: [id])
+  paymentId          String?                @unique
+  payment            Payment?               @relation("OrderPayment", fields: [paymentId], references: [id])
+  token              String
+  expiresAt          DateTime               @default(dbgenerated("NOW() + INTERVAL '24 hours'"))
+  referenceId        String
+  fulfilmentMethod   OrderFulfilmentMethod?
+  shippingMethodId   String?
+  shippingMethod     ShippingMethod?        @relation("OrderShippingMethod", fields: [shippingMethodId], references: [id])
+  shippingAddressId  String?
+  shippingAddress    Address?               @relation("OrderShippingAddress", fields: [shippingAddressId], references: [id])
+  items              OrderItem[]
+  dateOfExecution    DateTime?
+  currency           Currency               @default(USD)
+  sourceIp           String?
+  acceptedAt         DateTime?
+  readyForDispatchAt DateTime?
+  dispatchedAt       DateTime?
+  completedAt        DateTime?
+  cancelledAt        DateTime?
+  deletedAt          DateTime?
+  deletedBy          String?
+  createdAt          DateTime               @default(now())
+  updatedAt          DateTime               @updatedAt
+}
+
+model OrderItem {
+  id                String                 @id @default(cuid())
+  quantity          Int
+  unitPrice         Float
+  totalPrice        Float
+  orderId           String
+  order             Order                  @relation(fields: [orderId], references: [id])
+  rawData           Json?
+  productSnapshotId String?
+  productSnapshot   ProductSnapshot?       @relation("OrderItemProductSnapshot", fields: [productSnapshotId], references: [id])
+  imageId           String?
+  image             File?                  @relation("OrderItemImage", fields: [imageId], references: [id])
+  translations      OrderItemTranslation[]
+}
+
+model OrderItemTranslation {
+  id          String    @id @default(cuid())
+  locale      String
+  title       String
+  subtitle    String?
+  orderItemId String
+  orderItem   OrderItem @relation(fields: [orderItemId], references: [id])
+
+  @@unique([locale, orderItemId])
+}
+
+enum PaymentStatus {
+  pending
+  succeeded
+  refunded
+  failed
+  canceled
+}
+
+enum PaymentProvider {
+  stripe
+  revolut
+  payu
+  not_applicable
+}
+
+enum PaymentMethod {
+  card
+  blik
+  paypal
+  bank_transfer
+  cash_on_delivery
+}
+
+model Payment {
+  id        String           @id @default(cuid())
+  method    PaymentMethod
+  provider  PaymentProvider  @default(not_applicable)
+  shipping  Float            @default(0)
+  subtotal  Float            @default(0)
+  total     Float
+  discount  Float?
+  currency  Currency         @default(USD)
+  status    PaymentStatus    @default(pending)
+  createdAt DateTime         @default(now())
+  updatedAt DateTime         @updatedAt
+  sessions  PaymentSession[]
+  order     Order?           @relation("OrderPayment")
+}
+
+model PaymentSession {
+  id          String    @id @default(cuid())
+  referenceId String    @unique
+  amount      Float
+  currency    Currency  @default(USD)
+  rawData     Json
+  capturedAt  DateTime?
+  expiredAt   DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @default(now())
+  paymentId   String
+  payment     Payment   @relation(fields: [paymentId], references: [id])
+}
+
+enum CampaignType {
+  discount
+  promotion
+}
+
+model Campaign {
+  id             String       @id @default(cuid())
+  title          String
+  type           CampaignType
+  validFrom      DateTime
+  validTo        DateTime
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  amount         Float?
+  percentage     Float?
+  publishedAt    DateTime?
+  publishedBy    String?
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+}
+
+model ShippingMethod {
+  id                    String         @id @default(cuid())
+  title                 String
+  providerName          String
+  providerLogoId        String?        @unique
+  providerLogo          File?          @relation("ShippingMethodProviderLogo", fields: [providerLogoId], references: [id])
+  requireDateOfDelivery Boolean?
+  organizationId        String
+  organization          Organization   @relation(fields: [organizationId], references: [id])
+  shippingZones         ShippingZone[]
+  archivedAt            DateTime?
+  archivedBy            String?
+  publishedAt           DateTime?
+  publishedBy           String?
+  createdAt             DateTime       @default(now())
+  createdBy             String?
+  updatedAt             DateTime       @updatedAt
+  updatedBy             String?
+
+  orders Order[] @relation("OrderShippingMethod")
+}
+
+model ShippingZone {
+  id                 String         @id @default(cuid())
+  title              String
+  distanceUpto       Float?
+  price              Float
+  minimumOrderAmount Float?
+  shippingMethodId   String
+  shippingMethod     ShippingMethod @relation(fields: [shippingMethodId], references: [id])
+  eta                String
+  createdAt          DateTime       @default(now())
+  updatedAt          DateTime       @updatedAt
+}
+
+model Reservation {
+  id             String       @id @default(cuid())
+  firstname      String
+  lastname       String
+  userId         String?
+  user           User?        @relation(fields: [userId], references: [id])
+  guests         Int
+  phone          String
+  date           DateTime
+  referenceId    String
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  createdAt      DateTime     @default(now())
+  acceptedAt     DateTime?
+  cancelledAt    DateTime?
+  updatedAt      DateTime     @updatedAt
+}

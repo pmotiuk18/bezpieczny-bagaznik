@@ -2,6 +2,7 @@ import { PrismaNeon } from "@prisma/adapter-neon";
 import { createNextHandler } from "@shophost/rest-api/next";
 
 import { debugPrismaEngine } from "@/lib/debug-prisma";
+import { prisma } from "@/lib/prisma";
 
 // Debug Prisma setup on cold starts in production
 if (process.env.NODE_ENV === "production") {
@@ -17,6 +18,7 @@ const handler = createNextHandler({
     adapter,
     log: ["info", "warn", "error"],
   },
+  prisma,
   maps: {
     google: {
       key: process.env.GOOGLE_PLACES_API_KEY!,
