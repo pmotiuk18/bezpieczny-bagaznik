@@ -6,8 +6,8 @@ import {
 } from "@shophost/rest-api/schemas";
 import React, { useMemo, useState, useTransition } from "react";
 
-import { ProductCard } from "../../product-card";
 import { ProductCardSkeleton } from "../../ui/loading-shimmer";
+import { ProductCard } from "./product-card";
 
 interface MenuSectionProps {
   productCategories: LocalizedProductCategory[];

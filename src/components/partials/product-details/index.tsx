@@ -5,8 +5,8 @@ import { LocalizedProduct } from "@shophost/rest-api/schemas";
 import Link from "next/link";
 import React, { useState } from "react";
 
-import { useTranslation } from "../../lib/contexts/translation-context";
-import { ProductImageCarousel } from "../product-image-carousel";
+import { useTranslation } from "../../../lib/contexts/translation-context";
+import { ProductImageCarousel } from "./product-image-carousel";
 
 export interface ProductDetailsProps {
   product: LocalizedProduct;

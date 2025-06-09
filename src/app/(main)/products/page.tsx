@@ -4,7 +4,7 @@ import {
 } from "@shophost/rest-api/schemas";
 import React from "react";
 
-import { MenuSection } from "@/components/partials/homepage/menu-section";
+import { MenuSection } from "@/components/partials/product-list";
 import { shophost } from "@/lib/shophost.lib";
 
 export const dynamic = "force-dynamic";

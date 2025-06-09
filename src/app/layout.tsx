@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Inter, Red_Hat_Display } from "next/font/google";
 import React from "react";
 
-import { Footer } from "@/components/Footer";
-import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/footer";
+import { Navbar } from "@/components/navbar";
 import { AppProvider } from "@/components/provider/app-provider";
 
 import "../css/globals.css";

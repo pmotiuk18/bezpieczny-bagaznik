@@ -1,9 +1,9 @@
 import { CartItems, useCart } from "@shophost/react-sdk";
 import cx from "classnames";
+import { XIcon } from "lucide-react";
 import Link from "next/link";
 import React, { useRef, useState } from "react";
 
-import { CancelIcon } from "../tracking-icons";
 import { CartItem } from "./cart-item";
 
 interface CartDetailsProps {
@@ -61,7 +61,7 @@ export const CartDetails: React.FC<CartDetailsProps> = ({ onClose }) => {
             className="text-white p-1 rounded-full hover:bg-teal-400 transition-colors"
             aria-label="Close cart"
           >
-            <CancelIcon className="h-5 w-5" />
+            <XIcon className="h-5 w-5" />
           </button>
         )}
       </div>

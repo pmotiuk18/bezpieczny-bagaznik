@@ -13,7 +13,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Fragment, useEffect, useState } from "react";
 
-import { CartDetails } from "@/components/cart";
+import { CartDetails } from "@/components/partials/cart";
 
 import Ig from "../../public/images/ig.png";
 import Logo from "../../public/images/Logo-BB.png";
