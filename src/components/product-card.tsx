@@ -53,11 +53,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   const defaultImageRenderer = () => {
     if (!product.images || product.images.length === 0) {
       return (
-        <div
+        <Link
+          href={`/products/${product.id}`}
           className={`${imageClassName || "bg-slate-100 h-48 rounded-t-lg"} flex items-center justify-center`}
         >
           <span className="text-slate-400">No image</span>
-        </div>
+        </Link>
       );
     }
 

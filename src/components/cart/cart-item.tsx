@@ -25,8 +25,8 @@ export const CartItem: React.FC<CartItemProps> = ({
   return (
     <div className={cx("p-1 mb-3 transition-shadow")}>
       <div className="grid grid-cols-5">
-        {image && (
-          <div className="shrink-0 w-full h-full mr-3 rounded-md overflow-hidden col-span-2">
+        {image ? (
+          <div className="shrink-0 w-full h-24 mr-3 rounded-md overflow-hidden col-span-2">
             <Image
               width={100}
               height={100}
@@ -34,6 +34,12 @@ export const CartItem: React.FC<CartItemProps> = ({
               alt={title}
               className="w-full h-full object-cover"
             />
+          </div>
+        ) : (
+          <div className="shrink-0 w-full h-24 mr-3 rounded-md overflow-hidden col-span-2">
+            <div className="bg-slate-100 w-full h-full rounded-md flex items-center justify-center">
+              <span className="text-slate-400">No image</span>
+            </div>
           </div>
         )}
         <div className="flex-1 min-w-0 pl-4 col-span-3">
