@@ -48,8 +48,8 @@ importers:
         specifier: ^0.0.23
         version: 0.0.23(@types/react-dom@19.1.5(@types/react@19.1.5))(@types/react@19.1.5)(openapi3-ts@2.0.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(tailwindcss@4.1.7)
       '@shophost/rest-api':
-        specifier: ^0.1.18
-        version: 0.1.18(@types/node@20.17.50)(openapi3-ts@2.0.2)(prisma@6.9.0(typescript@5.8.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.3)
+        specifier: ^0.1.19
+        version: 0.1.19(@types/node@20.17.50)(openapi3-ts@2.0.2)(prisma@6.9.0(typescript@5.8.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.3)
       '@tailwindcss/forms':
         specifier: ^0.5.10
         version: 0.5.10(tailwindcss@4.1.7)
@@ -1326,8 +1326,8 @@ packages:
       react: '>=18.0.0'
       react-dom: '>=18.0.0'
 
-  '@shophost/rest-api@0.1.18':
-    resolution: {integrity: sha512-Zwbgizto8gHuoSXp3BbQHcv4I1ViSik9eXYsHDGeXjFQGXB5RLUiLCVe+x2qonutrZAjAMo/B7MerdVUer/haA==}
+  '@shophost/rest-api@0.1.19':
+    resolution: {integrity: sha512-8YF+E03NWj+bJvcA6W893l5B8sYl/6odTuey0BFScydbo8+BZxg+rM/Nzh7jCq+R1VRoxMkIYUt3jAkI8W3vBQ==}
     peerDependencies:
       react: '>=18.0.0'
       react-dom: '>=18.0.0'
@@ -4589,7 +4589,7 @@ snapshots:
       - sass
       - tailwindcss
 
-  '@shophost/rest-api@0.1.18(@types/node@20.17.50)(openapi3-ts@2.0.2)(prisma@6.9.0(typescript@5.8.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.3)':
+  '@shophost/rest-api@0.1.19(@types/node@20.17.50)(openapi3-ts@2.0.2)(prisma@6.9.0(typescript@5.8.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.3)':
     dependencies:
       '@anatine/zod-openapi': 2.2.8(openapi3-ts@2.0.2)(zod@3.25.28)
       '@prisma/client': 6.9.0(prisma@6.9.0(typescript@5.8.3))(typescript@5.8.3)

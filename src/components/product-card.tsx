@@ -1,6 +1,10 @@
+"use client";
+
 import { formatPrice, useCart } from "@shophost/react-sdk";
 import { LocalizedProduct } from "@shophost/rest-api/schemas";
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 import { useTranslation } from "../lib/contexts/translation-context";
@@ -34,6 +38,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   imageRenderer,
   onAddToCart,
 }) => {
+  const router = useRouter();
   const { addProductToCart } = useCart();
   const [showCheckmark, setShowCheckmark] = useState(false);
   const { t, locale } = useTranslation();
@@ -87,7 +92,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   };
 
   return (
-    <div className={className || "bg-white overflow-hidden duration-200"}>
+    <div
+      className={className || "bg-white overflow-hidden duration-200"}
+      onClick={() => router.push(`/products/${product.id}`)}
+    >
       {/* Product Image */}
       {showImage &&
         (imageRenderer ? imageRenderer(product) : defaultImageRenderer())}
@@ -95,13 +103,16 @@ export const ProductCard: React.FC<ProductCardProps> = ({
       {/* Product Details */}
       <div className="pt-4 mb-2">
         <div className="flex justify-between items-center">
-          <h3
-            className={
-              nameClassName || "h4 text-lg text-slate-800 font-red-hat-display"
-            }
-          >
-            {productName}
-          </h3>
+          <Link href={`/products/${product.id}`}>
+            <h3
+              className={
+                nameClassName ||
+                "h4 text-lg text-slate-800 font-red-hat-display hover:text-indigo-600 cursor-pointer"
+              }
+            >
+              {productName}
+            </h3>
+          </Link>
           <span
             className={
               priceClassName || "h4 font-red-hat-display text-slate-900 text-lg"
