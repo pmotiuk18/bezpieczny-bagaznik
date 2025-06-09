@@ -498,6 +498,7 @@ model Product {
   categories          ProductCategory[]    @relation("ProductCategories")
   modifierGroups      ModifierGroup[]      @relation("ProductToModifierGroup")
   translations        ProductTranslation[]
+  metadata            Json?
   publishedAt         DateTime?
   publishedBy         String?
   deletedAt           DateTime?

@@ -25245,6 +25245,7 @@ export namespace Prisma {
     organizationId: number
     manufacturerId: number
     tags: number
+    metadata: number
     publishedAt: number
     publishedBy: number
     deletedAt: number
@@ -25321,6 +25322,7 @@ export namespace Prisma {
     organizationId?: true
     manufacturerId?: true
     tags?: true
+    metadata?: true
     publishedAt?: true
     publishedBy?: true
     deletedAt?: true
@@ -25430,6 +25432,7 @@ export namespace Prisma {
     organizationId: string
     manufacturerId: string | null
     tags: string[]
+    metadata: JsonValue | null
     publishedAt: Date | null
     publishedBy: string | null
     deletedAt: Date | null
@@ -25471,6 +25474,7 @@ export namespace Prisma {
     organizationId?: boolean
     manufacturerId?: boolean
     tags?: boolean
+    metadata?: boolean
     publishedAt?: boolean
     publishedBy?: boolean
     deletedAt?: boolean
@@ -25502,6 +25506,7 @@ export namespace Prisma {
     organizationId?: boolean
     manufacturerId?: boolean
     tags?: boolean
+    metadata?: boolean
     publishedAt?: boolean
     publishedBy?: boolean
     deletedAt?: boolean
@@ -25527,6 +25532,7 @@ export namespace Prisma {
     organizationId?: boolean
     manufacturerId?: boolean
     tags?: boolean
+    metadata?: boolean
     publishedAt?: boolean
     publishedBy?: boolean
     deletedAt?: boolean
@@ -25552,6 +25558,7 @@ export namespace Prisma {
     organizationId?: boolean
     manufacturerId?: boolean
     tags?: boolean
+    metadata?: boolean
     publishedAt?: boolean
     publishedBy?: boolean
     deletedAt?: boolean
@@ -25563,7 +25570,7 @@ export namespace Prisma {
     latestSnapshotId?: boolean
   }
 
-  export type ProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "content" | "slug" | "sku" | "basePrice" | "discountedBasePrice" | "currency" | "organizationId" | "manufacturerId" | "tags" | "publishedAt" | "publishedBy" | "deletedAt" | "deletedBy" | "createdAt" | "createdBy" | "updatedAt" | "updatedBy" | "latestSnapshotId", ExtArgs["result"]["product"]>
+  export type ProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "content" | "slug" | "sku" | "basePrice" | "discountedBasePrice" | "currency" | "organizationId" | "manufacturerId" | "tags" | "metadata" | "publishedAt" | "publishedBy" | "deletedAt" | "deletedBy" | "createdAt" | "createdBy" | "updatedAt" | "updatedBy" | "latestSnapshotId", ExtArgs["result"]["product"]>
   export type ProductInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     images?: boolean | Product$imagesArgs<ExtArgs>
     organization?: boolean | OrganizationDefaultArgs<ExtArgs>
@@ -25609,6 +25616,7 @@ export namespace Prisma {
       organizationId: string
       manufacturerId: string | null
       tags: string[]
+      metadata: Prisma.JsonValue | null
       publishedAt: Date | null
       publishedBy: string | null
       deletedAt: Date | null
@@ -26059,6 +26067,7 @@ export namespace Prisma {
     readonly organizationId: FieldRef<"Product", 'String'>
     readonly manufacturerId: FieldRef<"Product", 'String'>
     readonly tags: FieldRef<"Product", 'String[]'>
+    readonly metadata: FieldRef<"Product", 'Json'>
     readonly publishedAt: FieldRef<"Product", 'DateTime'>
     readonly publishedBy: FieldRef<"Product", 'String'>
     readonly deletedAt: FieldRef<"Product", 'DateTime'>
@@ -43413,6 +43422,7 @@ export namespace Prisma {
     organizationId: 'organizationId',
     manufacturerId: 'manufacturerId',
     tags: 'tags',
+    metadata: 'metadata',
     publishedAt: 'publishedAt',
     publishedBy: 'publishedBy',
     deletedAt: 'deletedAt',
@@ -43653,19 +43663,19 @@ export namespace Prisma {
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
-  export const JsonNullValueInput: {
-    JsonNull: typeof JsonNull
-  };
-
-  export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
-
-
   export const NullableJsonNullValueInput: {
     DbNull: typeof DbNull,
     JsonNull: typeof JsonNull
   };
 
   export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
+
+
+  export const JsonNullValueInput: {
+    JsonNull: typeof JsonNull
+  };
+
+  export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
 
 
   export const QueryMode: {
@@ -45469,6 +45479,7 @@ export namespace Prisma {
     organizationId?: StringFilter<"Product"> | string
     manufacturerId?: StringNullableFilter<"Product"> | string | null
     tags?: StringNullableListFilter<"Product">
+    metadata?: JsonNullableFilter<"Product">
     publishedAt?: DateTimeNullableFilter<"Product"> | Date | string | null
     publishedBy?: StringNullableFilter<"Product"> | string | null
     deletedAt?: DateTimeNullableFilter<"Product"> | Date | string | null
@@ -45499,6 +45510,7 @@ export namespace Prisma {
     organizationId?: SortOrder
     manufacturerId?: SortOrderInput | SortOrder
     tags?: SortOrder
+    metadata?: SortOrderInput | SortOrder
     publishedAt?: SortOrderInput | SortOrder
     publishedBy?: SortOrderInput | SortOrder
     deletedAt?: SortOrderInput | SortOrder
@@ -45533,6 +45545,7 @@ export namespace Prisma {
     organizationId?: StringFilter<"Product"> | string
     manufacturerId?: StringNullableFilter<"Product"> | string | null
     tags?: StringNullableListFilter<"Product">
+    metadata?: JsonNullableFilter<"Product">
     publishedAt?: DateTimeNullableFilter<"Product"> | Date | string | null
     publishedBy?: StringNullableFilter<"Product"> | string | null
     deletedAt?: DateTimeNullableFilter<"Product"> | Date | string | null
@@ -45562,6 +45575,7 @@ export namespace Prisma {
     organizationId?: SortOrder
     manufacturerId?: SortOrderInput | SortOrder
     tags?: SortOrder
+    metadata?: SortOrderInput | SortOrder
     publishedAt?: SortOrderInput | SortOrder
     publishedBy?: SortOrderInput | SortOrder
     deletedAt?: SortOrderInput | SortOrder
@@ -45592,6 +45606,7 @@ export namespace Prisma {
     organizationId?: StringWithAggregatesFilter<"Product"> | string
     manufacturerId?: StringNullableWithAggregatesFilter<"Product"> | string | null
     tags?: StringNullableListFilter<"Product">
+    metadata?: JsonNullableWithAggregatesFilter<"Product">
     publishedAt?: DateTimeNullableWithAggregatesFilter<"Product"> | Date | string | null
     publishedBy?: StringNullableWithAggregatesFilter<"Product"> | string | null
     deletedAt?: DateTimeNullableWithAggregatesFilter<"Product"> | Date | string | null
@@ -48558,6 +48573,7 @@ export namespace Prisma {
     discountedBasePrice?: number | null
     currency: string
     tags?: ProductCreatetagsInput | string[]
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     publishedAt?: Date | string | null
     publishedBy?: string | null
     deletedAt?: Date | string | null
@@ -48587,6 +48603,7 @@ export namespace Prisma {
     organizationId: string
     manufacturerId?: string | null
     tags?: ProductCreatetagsInput | string[]
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     publishedAt?: Date | string | null
     publishedBy?: string | null
     deletedAt?: Date | string | null
@@ -48612,6 +48629,7 @@ export namespace Prisma {
     discountedBasePrice?: NullableFloatFieldUpdateOperationsInput | number | null
     currency?: StringFieldUpdateOperationsInput | string
     tags?: ProductUpdatetagsInput | string[]
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     publishedBy?: NullableStringFieldUpdateOperationsInput | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -48641,6 +48659,7 @@ export namespace Prisma {
     organizationId?: StringFieldUpdateOperationsInput | string
     manufacturerId?: NullableStringFieldUpdateOperationsInput | string | null
     tags?: ProductUpdatetagsInput | string[]
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     publishedBy?: NullableStringFieldUpdateOperationsInput | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -48668,6 +48687,7 @@ export namespace Prisma {
     organizationId: string
     manufacturerId?: string | null
     tags?: ProductCreatetagsInput | string[]
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     publishedAt?: Date | string | null
     publishedBy?: string | null
     deletedAt?: Date | string | null
@@ -48688,6 +48708,7 @@ export namespace Prisma {
     discountedBasePrice?: NullableFloatFieldUpdateOperationsInput | number | null
     currency?: StringFieldUpdateOperationsInput | string
     tags?: ProductUpdatetagsInput | string[]
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     publishedBy?: NullableStringFieldUpdateOperationsInput | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -48709,6 +48730,7 @@ export namespace Prisma {
     organizationId?: StringFieldUpdateOperationsInput | string
     manufacturerId?: NullableStringFieldUpdateOperationsInput | string | null
     tags?: ProductUpdatetagsInput | string[]
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     publishedBy?: NullableStringFieldUpdateOperationsInput | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -51276,6 +51298,29 @@ export namespace Prisma {
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatFilter<$PrismaModel> | number
   }
+  export type JsonNullableFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
 
   export type ModifierGroupListRelationFilter = {
     every?: ModifierGroupWhereInput
@@ -51323,6 +51368,7 @@ export namespace Prisma {
     organizationId?: SortOrder
     manufacturerId?: SortOrder
     tags?: SortOrder
+    metadata?: SortOrder
     publishedAt?: SortOrder
     publishedBy?: SortOrder
     deletedAt?: SortOrder
@@ -51400,6 +51446,32 @@ export namespace Prisma {
     _sum?: NestedFloatFilter<$PrismaModel>
     _min?: NestedFloatFilter<$PrismaModel>
     _max?: NestedFloatFilter<$PrismaModel>
+  }
+  export type JsonNullableWithAggregatesFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedJsonNullableFilter<$PrismaModel>
+    _max?: NestedJsonNullableFilter<$PrismaModel>
   }
   export type JsonFilter<$PrismaModel = never> =
     | PatchUndefined<
@@ -51754,29 +51826,6 @@ export namespace Prisma {
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntFilter<$PrismaModel> | number
   }
-  export type JsonNullableFilter<$PrismaModel = never> =
-    | PatchUndefined<
-        Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonNullableFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>
-
-  export type JsonNullableFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string[]
-    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-  }
 
   export type OrderScalarRelationFilter = {
     is?: OrderWhereInput
@@ -51850,32 +51899,6 @@ export namespace Prisma {
     _sum?: NestedIntFilter<$PrismaModel>
     _min?: NestedIntFilter<$PrismaModel>
     _max?: NestedIntFilter<$PrismaModel>
-  }
-  export type JsonNullableWithAggregatesFilter<$PrismaModel = never> =
-    | PatchUndefined<
-        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
-
-  export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string[]
-    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedJsonNullableFilter<$PrismaModel>
-    _max?: NestedJsonNullableFilter<$PrismaModel>
   }
 
   export type OrderItemScalarRelationFilter = {
@@ -55463,6 +55486,29 @@ export namespace Prisma {
     _min?: NestedFloatFilter<$PrismaModel>
     _max?: NestedFloatFilter<$PrismaModel>
   }
+  export type NestedJsonNullableFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
   export type NestedJsonFilter<$PrismaModel = never> =
     | PatchUndefined<
         Either<Required<NestedJsonFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>,
@@ -55518,29 +55564,6 @@ export namespace Prisma {
     _sum?: NestedIntFilter<$PrismaModel>
     _min?: NestedIntFilter<$PrismaModel>
     _max?: NestedIntFilter<$PrismaModel>
-  }
-  export type NestedJsonNullableFilter<$PrismaModel = never> =
-    | PatchUndefined<
-        Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
-        Required<NestedJsonNullableFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>
-
-  export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string[]
-    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
   }
 
   export type NestedEnumPaymentMethodFilter<$PrismaModel = never> = {
@@ -57279,6 +57302,7 @@ export namespace Prisma {
     discountedBasePrice?: number | null
     currency: string
     tags?: ProductCreatetagsInput | string[]
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     publishedAt?: Date | string | null
     publishedBy?: string | null
     deletedAt?: Date | string | null
@@ -57306,6 +57330,7 @@ export namespace Prisma {
     currency: string
     manufacturerId?: string | null
     tags?: ProductCreatetagsInput | string[]
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     publishedAt?: Date | string | null
     publishedBy?: string | null
     deletedAt?: Date | string | null
@@ -57838,6 +57863,7 @@ export namespace Prisma {
     organizationId?: StringFilter<"Product"> | string
     manufacturerId?: StringNullableFilter<"Product"> | string | null
     tags?: StringNullableListFilter<"Product">
+    metadata?: JsonNullableFilter<"Product">
     publishedAt?: DateTimeNullableFilter<"Product"> | Date | string | null
     publishedBy?: StringNullableFilter<"Product"> | string | null
     deletedAt?: DateTimeNullableFilter<"Product"> | Date | string | null
@@ -58949,6 +58975,7 @@ export namespace Prisma {
     discountedBasePrice?: number | null
     currency: string
     tags?: ProductCreatetagsInput | string[]
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     publishedAt?: Date | string | null
     publishedBy?: string | null
     deletedAt?: Date | string | null
@@ -58977,6 +59004,7 @@ export namespace Prisma {
     organizationId: string
     manufacturerId?: string | null
     tags?: ProductCreatetagsInput | string[]
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     publishedAt?: Date | string | null
     publishedBy?: string | null
     deletedAt?: Date | string | null
@@ -59612,6 +59640,7 @@ export namespace Prisma {
     discountedBasePrice?: number | null
     currency: string
     tags?: ProductCreatetagsInput | string[]
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     publishedAt?: Date | string | null
     publishedBy?: string | null
     deletedAt?: Date | string | null
@@ -59639,6 +59668,7 @@ export namespace Prisma {
     currency: string
     organizationId: string
     tags?: ProductCreatetagsInput | string[]
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     publishedAt?: Date | string | null
     publishedBy?: string | null
     deletedAt?: Date | string | null
@@ -60086,6 +60116,7 @@ export namespace Prisma {
     discountedBasePrice?: number | null
     currency: string
     tags?: ProductCreatetagsInput | string[]
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     publishedAt?: Date | string | null
     publishedBy?: string | null
     deletedAt?: Date | string | null
@@ -60114,6 +60145,7 @@ export namespace Prisma {
     organizationId: string
     manufacturerId?: string | null
     tags?: ProductCreatetagsInput | string[]
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     publishedAt?: Date | string | null
     publishedBy?: string | null
     deletedAt?: Date | string | null
@@ -60938,6 +60970,7 @@ export namespace Prisma {
     discountedBasePrice?: number | null
     currency: string
     tags?: ProductCreatetagsInput | string[]
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     publishedAt?: Date | string | null
     publishedBy?: string | null
     deletedAt?: Date | string | null
@@ -60966,6 +60999,7 @@ export namespace Prisma {
     organizationId: string
     manufacturerId?: string | null
     tags?: ProductCreatetagsInput | string[]
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     publishedAt?: Date | string | null
     publishedBy?: string | null
     deletedAt?: Date | string | null
@@ -60995,6 +61029,7 @@ export namespace Prisma {
     discountedBasePrice?: number | null
     currency: string
     tags?: ProductCreatetagsInput | string[]
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     publishedAt?: Date | string | null
     publishedBy?: string | null
     deletedAt?: Date | string | null
@@ -61023,6 +61058,7 @@ export namespace Prisma {
     organizationId: string
     manufacturerId?: string | null
     tags?: ProductCreatetagsInput | string[]
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     publishedAt?: Date | string | null
     publishedBy?: string | null
     deletedAt?: Date | string | null
@@ -61095,6 +61131,7 @@ export namespace Prisma {
     discountedBasePrice?: NullableFloatFieldUpdateOperationsInput | number | null
     currency?: StringFieldUpdateOperationsInput | string
     tags?: ProductUpdatetagsInput | string[]
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     publishedBy?: NullableStringFieldUpdateOperationsInput | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -61123,6 +61160,7 @@ export namespace Prisma {
     organizationId?: StringFieldUpdateOperationsInput | string
     manufacturerId?: NullableStringFieldUpdateOperationsInput | string | null
     tags?: ProductUpdatetagsInput | string[]
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     publishedBy?: NullableStringFieldUpdateOperationsInput | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -61158,6 +61196,7 @@ export namespace Prisma {
     discountedBasePrice?: NullableFloatFieldUpdateOperationsInput | number | null
     currency?: StringFieldUpdateOperationsInput | string
     tags?: ProductUpdatetagsInput | string[]
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     publishedBy?: NullableStringFieldUpdateOperationsInput | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -61186,6 +61225,7 @@ export namespace Prisma {
     organizationId?: StringFieldUpdateOperationsInput | string
     manufacturerId?: NullableStringFieldUpdateOperationsInput | string | null
     tags?: ProductUpdatetagsInput | string[]
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     publishedBy?: NullableStringFieldUpdateOperationsInput | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -61226,6 +61266,7 @@ export namespace Prisma {
     discountedBasePrice?: number | null
     currency: string
     tags?: ProductCreatetagsInput | string[]
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     publishedAt?: Date | string | null
     publishedBy?: string | null
     deletedAt?: Date | string | null
@@ -61254,6 +61295,7 @@ export namespace Prisma {
     organizationId: string
     manufacturerId?: string | null
     tags?: ProductCreatetagsInput | string[]
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     publishedAt?: Date | string | null
     publishedBy?: string | null
     deletedAt?: Date | string | null
@@ -61294,6 +61336,7 @@ export namespace Prisma {
     discountedBasePrice?: NullableFloatFieldUpdateOperationsInput | number | null
     currency?: StringFieldUpdateOperationsInput | string
     tags?: ProductUpdatetagsInput | string[]
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     publishedBy?: NullableStringFieldUpdateOperationsInput | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -61322,6 +61365,7 @@ export namespace Prisma {
     organizationId?: StringFieldUpdateOperationsInput | string
     manufacturerId?: NullableStringFieldUpdateOperationsInput | string | null
     tags?: ProductUpdatetagsInput | string[]
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     publishedBy?: NullableStringFieldUpdateOperationsInput | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -61374,6 +61418,7 @@ export namespace Prisma {
     discountedBasePrice?: number | null
     currency: string
     tags?: ProductCreatetagsInput | string[]
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     publishedAt?: Date | string | null
     publishedBy?: string | null
     deletedAt?: Date | string | null
@@ -61402,6 +61447,7 @@ export namespace Prisma {
     organizationId: string
     manufacturerId?: string | null
     tags?: ProductCreatetagsInput | string[]
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     publishedAt?: Date | string | null
     publishedBy?: string | null
     deletedAt?: Date | string | null
@@ -64204,6 +64250,7 @@ export namespace Prisma {
     currency: string
     manufacturerId?: string | null
     tags?: ProductCreatetagsInput | string[]
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     publishedAt?: Date | string | null
     publishedBy?: string | null
     deletedAt?: Date | string | null
@@ -64603,6 +64650,7 @@ export namespace Prisma {
     discountedBasePrice?: NullableFloatFieldUpdateOperationsInput | number | null
     currency?: StringFieldUpdateOperationsInput | string
     tags?: ProductUpdatetagsInput | string[]
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     publishedBy?: NullableStringFieldUpdateOperationsInput | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -64630,6 +64678,7 @@ export namespace Prisma {
     currency?: StringFieldUpdateOperationsInput | string
     manufacturerId?: NullableStringFieldUpdateOperationsInput | string | null
     tags?: ProductUpdatetagsInput | string[]
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     publishedBy?: NullableStringFieldUpdateOperationsInput | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -64656,6 +64705,7 @@ export namespace Prisma {
     currency?: StringFieldUpdateOperationsInput | string
     manufacturerId?: NullableStringFieldUpdateOperationsInput | string | null
     tags?: ProductUpdatetagsInput | string[]
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     publishedBy?: NullableStringFieldUpdateOperationsInput | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -65211,6 +65261,7 @@ export namespace Prisma {
     discountedBasePrice?: NullableFloatFieldUpdateOperationsInput | number | null
     currency?: StringFieldUpdateOperationsInput | string
     tags?: ProductUpdatetagsInput | string[]
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     publishedBy?: NullableStringFieldUpdateOperationsInput | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -65239,6 +65290,7 @@ export namespace Prisma {
     organizationId?: StringFieldUpdateOperationsInput | string
     manufacturerId?: NullableStringFieldUpdateOperationsInput | string | null
     tags?: ProductUpdatetagsInput | string[]
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     publishedBy?: NullableStringFieldUpdateOperationsInput | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -65265,6 +65317,7 @@ export namespace Prisma {
     organizationId?: StringFieldUpdateOperationsInput | string
     manufacturerId?: NullableStringFieldUpdateOperationsInput | string | null
     tags?: ProductUpdatetagsInput | string[]
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     publishedBy?: NullableStringFieldUpdateOperationsInput | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -65345,6 +65398,7 @@ export namespace Prisma {
     currency: string
     organizationId: string
     tags?: ProductCreatetagsInput | string[]
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     publishedAt?: Date | string | null
     publishedBy?: string | null
     deletedAt?: Date | string | null
@@ -65375,6 +65429,7 @@ export namespace Prisma {
     discountedBasePrice?: NullableFloatFieldUpdateOperationsInput | number | null
     currency?: StringFieldUpdateOperationsInput | string
     tags?: ProductUpdatetagsInput | string[]
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     publishedBy?: NullableStringFieldUpdateOperationsInput | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -65402,6 +65457,7 @@ export namespace Prisma {
     currency?: StringFieldUpdateOperationsInput | string
     organizationId?: StringFieldUpdateOperationsInput | string
     tags?: ProductUpdatetagsInput | string[]
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     publishedBy?: NullableStringFieldUpdateOperationsInput | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -65428,6 +65484,7 @@ export namespace Prisma {
     currency?: StringFieldUpdateOperationsInput | string
     organizationId?: StringFieldUpdateOperationsInput | string
     tags?: ProductUpdatetagsInput | string[]
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     publishedBy?: NullableStringFieldUpdateOperationsInput | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -65522,6 +65579,7 @@ export namespace Prisma {
     discountedBasePrice?: NullableFloatFieldUpdateOperationsInput | number | null
     currency?: StringFieldUpdateOperationsInput | string
     tags?: ProductUpdatetagsInput | string[]
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     publishedBy?: NullableStringFieldUpdateOperationsInput | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -65550,6 +65608,7 @@ export namespace Prisma {
     organizationId?: StringFieldUpdateOperationsInput | string
     manufacturerId?: NullableStringFieldUpdateOperationsInput | string | null
     tags?: ProductUpdatetagsInput | string[]
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     publishedBy?: NullableStringFieldUpdateOperationsInput | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -65576,6 +65635,7 @@ export namespace Prisma {
     organizationId?: StringFieldUpdateOperationsInput | string
     manufacturerId?: NullableStringFieldUpdateOperationsInput | string | null
     tags?: ProductUpdatetagsInput | string[]
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     publishedBy?: NullableStringFieldUpdateOperationsInput | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -65893,6 +65953,7 @@ export namespace Prisma {
     discountedBasePrice?: NullableFloatFieldUpdateOperationsInput | number | null
     currency?: StringFieldUpdateOperationsInput | string
     tags?: ProductUpdatetagsInput | string[]
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     publishedBy?: NullableStringFieldUpdateOperationsInput | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -65921,6 +65982,7 @@ export namespace Prisma {
     organizationId?: StringFieldUpdateOperationsInput | string
     manufacturerId?: NullableStringFieldUpdateOperationsInput | string | null
     tags?: ProductUpdatetagsInput | string[]
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     publishedBy?: NullableStringFieldUpdateOperationsInput | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -65947,6 +66009,7 @@ export namespace Prisma {
     organizationId?: StringFieldUpdateOperationsInput | string
     manufacturerId?: NullableStringFieldUpdateOperationsInput | string | null
     tags?: ProductUpdatetagsInput | string[]
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     publishedBy?: NullableStringFieldUpdateOperationsInput | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null

@@ -37,6 +37,8 @@ const ProductPage = async ({ params: paramsPromise }: ProductPageProps) => {
 
   const product: LocalizedProduct = data.body;
 
+  console.log(product);
+
   return (
     <div className="flex flex-col min-h-screen font-[family-name:var(--font-geist-sans)]">
       <main className="flex-grow">

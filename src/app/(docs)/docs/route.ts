@@ -13,5 +13,10 @@ export const GET = async () => {
       description: "API documentation for Shophost Organization",
     },
     operationsSorter: "alpha",
+    servers: [
+      {
+        url: "http://localhost:3000/api",
+      },
+    ],
   })();
 };

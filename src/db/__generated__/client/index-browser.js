@@ -368,6 +368,7 @@ exports.Prisma.ProductScalarFieldEnum = {
   organizationId: 'organizationId',
   manufacturerId: 'manufacturerId',
   tags: 'tags',
+  metadata: 'metadata',
   publishedAt: 'publishedAt',
   publishedBy: 'publishedBy',
   deletedAt: 'deletedAt',
@@ -560,12 +561,12 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
-exports.Prisma.JsonNullValueInput = {
+exports.Prisma.NullableJsonNullValueInput = {
+  DbNull: Prisma.DbNull,
   JsonNull: Prisma.JsonNull
 };
 
-exports.Prisma.NullableJsonNullValueInput = {
-  DbNull: Prisma.DbNull,
+exports.Prisma.JsonNullValueInput = {
   JsonNull: Prisma.JsonNull
 };
 
