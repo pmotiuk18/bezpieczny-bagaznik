@@ -4,9 +4,10 @@ import {
   LocalizedProduct,
   LocalizedProductCategory,
 } from "@shophost/rest-api/schemas";
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useTransition } from "react";
 
 import { ProductCard } from "../../product-card";
+import { ProductCardSkeleton } from "../../ui/loading-shimmer";
 
 interface MenuSectionProps {
   productCategories: LocalizedProductCategory[];
@@ -20,12 +21,19 @@ const MenuSection: React.FC<MenuSectionProps> = ({
   const [selectedCategory, setSelectedCategory] = useState<string>(
     productCategories[0]?.id || ""
   );
+  const [isPending, startTransition] = useTransition();
 
   const filteredProducts = useMemo(() => {
     return products.filter((product) =>
       product.categories.some((category) => selectedCategory === category.id)
     );
   }, [products, selectedCategory]);
+
+  const handleCategoryChange = (categoryId: string) => {
+    startTransition(() => {
+      setSelectedCategory(categoryId);
+    });
+  };
 
   return (
     <section className="relative border-t border-transparent dark:border-gray-800">
@@ -50,7 +58,7 @@ const MenuSection: React.FC<MenuSectionProps> = ({
                     <button
                       key={category.id}
                       className={`
-                        whitespace-nowrap cursor-pointer pb-2 border-b-4 font-medium md:text-sm transition-colors duration-150 ease-in-out flex-shrink-0
+                        whitespace-nowrap cursor-pointer pb-2 border-b-4 font-medium md:text-sm transition-colors duration-150 ease-in-out flex-shrink-0 relative
                         ${index === 0 ? "pl-0" : "pl-1"}
                         ${index === productCategories.length - 1 ? "pr-0" : "pr-1"}
                         ${
@@ -58,8 +66,9 @@ const MenuSection: React.FC<MenuSectionProps> = ({
                             ? "border-teal-500 text-teal-600 dark:border-teal-400 dark:text-teal-400"
                             : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300 dark:hover:border-gray-600"
                         }
+                        ${isPending ? "opacity-70" : ""}
                       `}
-                      onClick={() => setSelectedCategory(category.id)}
+                      onClick={() => handleCategoryChange(category.id)}
                       role="tab"
                       aria-selected={selectedCategory === category.id}
                       aria-controls={`${category.id}-panel`}
@@ -74,9 +83,21 @@ const MenuSection: React.FC<MenuSectionProps> = ({
         </div>
         <div className="mx-auto mt-8 mb-10 md:mb-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredProducts?.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
+            {isPending ? (
+              Array.from({ length: 6 }).map((_, i) => (
+                <ProductCardSkeleton key={`skeleton-${i}`} />
+              ))
+            ) : filteredProducts?.length > 0 ? (
+              filteredProducts.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))
+            ) : (
+              <div className="col-span-full text-center py-12">
+                <p className="text-gray-500 dark:text-gray-400 text-lg">
+                  No products found in this category.
+                </p>
+              </div>
+            )}
           </div>
         </div>
       </div>
