@@ -44,8 +44,6 @@ const ProductsPage = async () => {
     throw new Error("Failed to fetch product categories");
   }
 
-  console.log(data);
-
   return (
     <div className="flex flex-col min-h-screen font-[family-name:var(--font-geist-sans)]">
       <main className="flex-grow">
