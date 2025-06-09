@@ -62,13 +62,15 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     }
 
     return (
-      <Image
-        src={product.images[0].url}
-        width={500}
-        height={500}
-        alt={productName}
-        className={imageClassName || "w-full h-48 object-cover rounded-lg"}
-      />
+      <Link href={`/products/${product.id}`}>
+        <Image
+          src={product.images[0].url}
+          width={500}
+          height={500}
+          alt={productName}
+          className={imageClassName || "w-full h-48 object-cover rounded-lg"}
+        />
+      </Link>
     );
   };
 
@@ -92,10 +94,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   };
 
   return (
-    <div
-      className={className || "bg-white overflow-hidden duration-200"}
-      onClick={() => router.push(`/products/${product.id}`)}
-    >
+    <div className={className || "bg-white overflow-hidden duration-200"}>
       {/* Product Image */}
       {showImage &&
         (imageRenderer ? imageRenderer(product) : defaultImageRenderer())}
