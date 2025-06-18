@@ -1,4 +1,8 @@
+ENG 
 E-commerce platform for car roof racks, towbar racks, roof tents and accessories - with community features and blog.
+
+PL 
+Sklep internetowy z bagażnikami dachowymi, na hak, namiotami dachowymi i akcesoriami - z blogiem i funkcjami społecznościowymi.
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
