@@ -1,3 +1,5 @@
+E-commerce platform for car roof racks, towbar racks, roof tents and accessories - with community features and blog.
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
